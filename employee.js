@@ -1,30 +1,34 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+var table = require("console.table");
+const { prompt } = require("inquirer");
+
 var connection = mysql.createConnection({
-    host: "localhost",
-  
-    // Your port; if not 3306
-    port: 3306,
-  
-    // Your username
-    user: "root",
-  
-    // Your password
-    password: "goldfish",
-    database: "employee_db"
-  });
+  host: "localhost",
+
+  // Your port; if not 3306
+  port: 3306,
+
+  // Your username
+  user: "root",
+
+  // Your password
+  password: "goldfish",
+  database: "employee_db"
+});
 
 const firstQuestion = [{
   type: "list",
   name: "question1",
   message: "What would you like to do?",
   choices: ["View all employees",
-      "View all departments",
-      "View all roles",
-      "Add department",
-      "Add role",
-      "Add employees",
-      "Update employee roles"
+    "View all departments",
+    "View all roles",
+    "Add department",
+    "Add role",
+    "Add employees",
+    "Update employee roles",
+    "Exit"
   ]
 }]
 
@@ -97,25 +101,65 @@ const employeeUpdate = [{
 }
 
 ]
-  
-  
-  connection.connect(function(err) {
-    if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-    afterConnection();
-  });
-  
-  
-  function afterConnection() {
-    inquirer.prompt(firstQuestion).then(questionAnswer => {
-      console.log(firstQuestion.questionAnswer)
+
+
+connection.connect(function (err) {
+  if (err) throw err;
+  console.log("connected as id " + connection.threadId);
+  afterConnection();
+});
+
+
+function afterConnection() {
+  inquirer.prompt(firstQuestion).then(questionAnswer => {
+    questionAnswer.question1
+
+    console.log(questionAnswer)
+    if (questionAnswer.question1 === "view all employees") {
+
+    } else if (questionAnswer.question1 === "view all departments") {
+
+    } else if (questionAnswer.question1 === "view all roles") {
+
+    } else if (questionAnswer.question1 === "Add department") {
+
+    }else if (questionAnswer.question1 === "Add role"){
+
+    }else if (questionAnswer.question1 === "Add employees"){
+
+    }else if (questionAnswer.question1 === "Update employee roles"){
+
+    }else {
+      connection.end()
+    }
+  })
+}
+
+function addEmp (){
+  inquirer.prompt(addEmployee).then(function(data){
+    console.log(data)
+
+    connection.query("SELECT * FROM role", (err, res) => {
+        console.log(res)
+        const filteredArray = res.filter(val => {
+          return data.titleRole === val.title
+        })
+
+        console.log(filteredArray)
     })
-  }
-      
-  
-  
-  // connection.query("SELECT * FROM department, role, employee", function(err, res) {
-  //       if (err) throw err;
-  //       console.table(res);
-  //       connection.end();
-  //     });
+
+    connection.query("INSERT INTO employee SET ?", {
+      first_name: data.employeeFirst,
+      last_name: data.employeeLast,
+      role_id: something,
+    },(err,res) => {
+      if (err) throw err
+    }
+    )
+  })
+}
+
+
+
+
+
