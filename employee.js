@@ -46,7 +46,7 @@ const addEmployee = [{
 {
   type: "list",
   name: "employeeRole",
-  choices: ["Director", "Fashion Assistant", "Intern", "Intern", "Fasion Assistant"],
+  choices: ["Director", "Fashion Assistant", "Intern"],
   message: "What is the employees role?"
 },
 {

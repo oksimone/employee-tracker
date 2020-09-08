@@ -37,8 +37,7 @@ INSERT INTO department(name)
 VALUES("Fashion"), ("Photography"), ("Accessories"), ("Model");
 
 INSERT INTO role(title, salary)
-VALUES("Director", 100000), ("Fashion Assistant", 40000), ("Intern", 30000), ("Intern", 30000), ("Fasion Assistant", 65000);
+VALUES("Director", 100000), ("Fashion Assistant", 40000), ("Intern", 30000), ("Intern", 30000);
 
 INSERT INTO employee(first_name, last_name, role_id)
 VALUES("Lisa", "Love", 1), ( "Lauren", "Conrad",2),( "Heidi", "Montag",3), ( "Lo", "Bosworth", 4), ( "Whitney", "Port",5);
-
