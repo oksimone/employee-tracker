@@ -8,14 +8,13 @@
   
   * [Usage](#usage)
   * [License](#License)
-  
   * [Questions](#Questions)
 
 
   ## Usage
-  <p>GIF of the working app</p>
+  
   ![](https://github.com/oksimone/employee-tracker/blob/master/assets/employee.gif)
-
+  <p>GIF of the working app</p>
  
 
 
