@@ -7,7 +7,7 @@ USE employee_db;
 
 -- You need three tables - department, employee, role --
 
--- Creates the table "people" within animals_db --
+-- Creates the table "people" within animals_db --department
 CREATE TABLE department (
   ID INT AUTO_INCREMENT NOT NULL,
   -- hold department name --
@@ -20,7 +20,6 @@ CREATE TABLE role (
  ID INT AUTO_INCREMENT NOT NULL,
  title VARCHAR(30),
  salary DECIMAL NOT NULL,
- department_id INT NOT NULL,
  PRIMARY KEY(ID)
 );
 
@@ -35,11 +34,11 @@ CREATE TABLE employee (
 );
 
 INSERT INTO department(name)
-VALUES("legal"), ("receptionist"), ("doctor"), ("mechanic");
+VALUES("Fashion"), ("Photography"), ("Accessories"), ("Model");
 
-INSERT INTO role(title, salary, department_id)
-VALUES("laywer", 95000, 1), ("receptionist", 100000, 2), ("doctor", 50000, 3);
+INSERT INTO role(title, salary)
+VALUES("Director", 100000), ("Fashion Assistant", 40000), ("Intern", 30000), ("Intern", 30000), ("Fasion Assistant", 65000);
 
 INSERT INTO employee(first_name, last_name, role_id)
-VALUES("k", "s", 1), ( "c", "w",2), ( "l", "w", 3), ( "s", "w",4);
+VALUES("Lisa", "Love", 1), ( "Lauren", "Conrad",2),( "Heidi", "Montag",3), ( "Lo", "Bosworth", 4), ( "Whitney", "Port",5);
 

@@ -69,13 +69,6 @@ const addRole = [{
 },
 ]
 
-// const viewDepart = [{
-//   type: "list",
-//   name: "viewDepartment",
-//   // input choices
-//   message: "Which department would you like to view?"
-
-// }]
 
 const addDepartment = [{
 
@@ -85,13 +78,6 @@ const addDepartment = [{
 
 }]
 
-// const viewRole = [{
-//   type: "list",
-//   name: "viewRole",
-//   // choices
-//   message: "Which role would you like to view?"
-
-// }]
 const employeeUpdate = [{
   type: "list",
   name: "updateEm",
