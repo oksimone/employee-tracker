@@ -14,7 +14,7 @@
 
   ## Usage
   GIF of the working app
-  ![](https://github.com/oksimone/note-taker/blob/master/public/assets/notetaker.gif)
+  ![](https://github.com/oksimone/employee-tracker/blob/master/assets/employee.gif)
 
  
 
