@@ -16,7 +16,7 @@
   ![](https://github.com/oksimone/employee-tracker/blob/master/assets/employee.gif)
   <p>GIF of the working app</p>
  
-   ![](https://github.com/oksimone/employee-tracker/blob/master/assets/employee.gif)
+   ![](https://drive.google.com/file/d/1q8wH9ZIg8_LQSGd6MP_pv5cZeXyNr27I/view)
   <p>Here's a video of the working app!</p>
 
 
