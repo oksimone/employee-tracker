@@ -13,7 +13,7 @@
 
 
   ## Usage
-  GIF of the working app
+  <p>GIF of the working app</p>
   ![](https://github.com/oksimone/employee-tracker/blob/master/assets/employee.gif)
 
  
