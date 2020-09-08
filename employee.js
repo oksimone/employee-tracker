@@ -46,13 +46,13 @@ const addEmployee = [{
 {
   type: "list",
   name: "employeeRole",
-  choices: ["laywer", "receptionist", "doctor"],
+  choices: ["Director", "Fashion Assistant", "Intern", "Intern", "Fasion Assistant"],
   message: "What is the employees role?"
 },
 {
   type: "list",
   name: "employeeManager",
-  choices: ["sam", "chelsea", "grady", "emma"],
+  choices: ["Sam", "Allyson", "Jason", "Kelley"],
   message: "Who is the employees manager?"
 }]
 
@@ -67,27 +67,31 @@ const addRole = [{
   name: "salaryRole",
   message: "What is the salary of the role?",
 },
-{
+]
+
+// const viewDepart = [{
+//   type: "list",
+//   name: "viewDepartment",
+//   // input choices
+//   message: "Which department would you like to view?"
+
+// }]
+
+const addDepartment = [{
+
   type: "input",
   name: "departmentTitle",
   message: "What is the title of the department?"
-}]
-
-const viewDepart = [{
-  type: "list",
-  name: "viewDepartment",
-  // input choices
-  message: "Which department would you like to view?"
 
 }]
 
-const viewRole = [{
-  type: "list",
-  name: "viewRole",
-  // choices
-  message: "Which role would you like to view?"
+// const viewRole = [{
+//   type: "list",
+//   name: "viewRole",
+//   // choices
+//   message: "Which role would you like to view?"
 
-}]
+// }]
 const employeeUpdate = [{
   type: "list",
   name: "updateEm",
@@ -115,15 +119,16 @@ function afterConnection() {
   inquirer.prompt(firstQuestion).then(questionAnswer => {
     questionAnswer.question1
 
-    console.log(questionAnswer)
-    if (questionAnswer.question1 === "view all employees") {
+    console.log(questionAnswer.question1)
+  
+    if (questionAnswer.question1 === "View all employees") {
       viewAllEmployees()
-    } else if (questionAnswer.question1 === "view all departments") {
-      // viewAllDepart()
-    } else if (questionAnswer.question1 === "view all roles") {
-      // viewAllRoles()
+    } else if (questionAnswer.question1 === "View all departments") {
+      viewAllDepart()
+    } else if (questionAnswer.question1 === "View all roles") {
+      viewAllRoles()
     } else if (questionAnswer.question1 === "Add department") {
-      // addDepart()
+      addDepart()
     } else if (questionAnswer.question1 === "Add role") {
       addRoles()
     } else if (questionAnswer.question1 === "Add employees") {
@@ -146,7 +151,7 @@ function addEmp() {
         console.log(data.employeeRole, val.title)
         return data.employeeRole === val.title
       })
-     console.log(filteredArray)
+      console.log(filteredArray)
       connection.query("INSERT INTO employee SET ?", {
         first_name: data.employeeFirst,
         last_name: data.employeeLast,
@@ -166,22 +171,25 @@ function viewAllEmployees() {
   connection.query("SELECT * FROM employee", function (err, res) {
     if (err) throw err;
     console.table(res);
+    afterConnection();
   })
 }
 
-// function viewAllRoles() {
-//   connection.query("SELECT * role", function (err, res) {
-//     if (err) throw err;
-//     console.table(res);
-//   })
-// }
+function viewAllRoles() {
+  connection.query("SELECT * FROM role", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    afterConnection();
+  })
+}
 
-// function viewAllDepart() {
-//   connection.query("SELECT * department", function (err, res) {
-//     if (err) throw err;
-//     console.table(res);
-//   })
-// }
+function viewAllDepart() {
+  connection.query("SELECT * FROM department", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    afterConnection();
+  })
+}
 
 function addRoles() {
   inquirer.prompt(addRole).then(data => {
@@ -192,9 +200,9 @@ function addRoles() {
     }, (err, res) => {
       if (err) throw err;
       console.table(res);
-    afterConnection()
+      afterConnection();
     })
-    
+
   })
 }
 
@@ -206,15 +214,17 @@ function addRoles() {
 // }
 
 function addDepart() {
-  
-  inquirer.prompt(addRole).then(data => {
+
+  inquirer.prompt(addDepartment).then(data => {
     console.log(data)
-    connection.query("INSERT INTO department SET ? ", {
-      name: data.viewDepartment
-    }, (err, res) => {
-      if (err) throw err;
-      console.table(res);
-    afterConnection()
+    connection.query("INSERT INTO department SET ? ",
+      {
+        name: data.departmentTitle
+      },
+      (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        afterConnection();
+      })
   })
-})
 }
